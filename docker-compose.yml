@@ -1,14 +1,14 @@
-version: '3.9'
+version: "3.9"
 
 services:
   db:
     image: mysql:8.0
     container_name: symfony_db
     environment:
-      MYSQL_ROOT_PASSWORD: cd93c6XBt4F8rQ
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: miams
-      MYSQL_USER: yamine
-      MYSQL_PASSWORD: cd93c6XBt4F8rQ
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
     ports:
       - "3306:3306"
     volumes:
@@ -25,7 +25,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: mysql://yamine:cd93c6XBt4F8rQ@db:3306/miams
+      DATABASE_URL: mysql://root:root@127.0.0.1:3306/miams
     command: >
       sh -c "
         php bin/console doctrine:database:create --if-not-exists &&
@@ -33,7 +33,7 @@ services:
         php bin/console doctrine:fixtures:load --no-interaction &&
         symfony server:start --no-tls --port=8000 --allow-http
       "
+  
 
 volumes:
   db_data:
-
