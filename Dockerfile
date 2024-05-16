@@ -58,7 +58,7 @@ FROM php:8.2-fpm
 WORKDIR /var/www
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     build-essential \
     libpng-dev \
     libjpeg62-turbo-dev \
@@ -69,17 +69,15 @@ RUN apt-get update && apt-get install -y \
     vim \
     unzip \
     git \
-    curl \
-    libonig-dev 
+    curl
 
-# Clear cache
+RUN apt-get install -y libonig-dev
+
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get upgrade -y
-# Install extensions
+
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl
 RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ --with-freetype=/usr/include/
 RUN docker-php-ext-install gd
-
 # Install composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -99,4 +97,4 @@ USER www-data
 
 # Expose port 8000 and start php-fpm server
 EXPOSE 8000
-CMD ["php-fpm"]
+CMD ["symfony", "server:start", "--port=8000", "--dir=/app"]
