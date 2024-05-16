@@ -69,7 +69,8 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y \
     vim \
     unzip \
     git \
-    curl
+    curl \
+    libzip-dev
 
 RUN apt-get install -y libonig-dev
 
