@@ -26,13 +26,7 @@ services:
       - db
     environment:
       DATABASE_URL: mysql://root:root@db:3306/miams  # Remplacer 127.0.0.1 par db
-    # command: >
-    #   sh -c "
-    #     php bin/console doctrine:database:create --if-not-exists &&
-    #     php bin/console doctrine:schema:update --force &&
-    #     php bin/console doctrine:fixtures:load --no-interaction &&
-    #     symfony server:start --no-tls --port=8000 --allow-http
-    #   "
+
 
 volumes:
   db_data:
