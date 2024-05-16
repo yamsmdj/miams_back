@@ -30,10 +30,11 @@ WORKDIR /var/www/html
 # Définir la variable d'environnement pour autoriser les plugins Composer en tant que super utilisateur
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
+RUN php bin/console cache:clear
 # Installer les dépendances de développement pour éviter les erreurs liées aux bundles dev
 RUN composer install --optimize-autoloader
 
-RUN php bin/console cache:clear
+
 
 # Donner les permissions appropriées
 RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public
