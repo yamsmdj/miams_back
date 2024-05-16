@@ -19,7 +19,7 @@ RUN wget https://get.symfony.com/cli/installer -O - | bash \
     && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
 
 # Install MySQL client
-RUN apt-get update && apt-get install -y mysql-client
+RUN apt-get update && apt-get install -y default-mysql-client
 
 # Copier les fichiers de l'application
 COPY . /var/www/html
