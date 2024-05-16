@@ -9,64 +9,30 @@ services:
       MYSQL_DATABASE: miams
       MYSQL_PASSWORD: root
     ports:
-      - "3306:3306"
-    volumes:
-      - db_data:/var/lib/mysql
+      
+"3306:3306"
+  volumes:
+    
+db_data:/var/lib/mysql
+app:
+  build:
+    context: .
+  container_name: symfony_app
+  working_dir: /var/www/html
+  volumes:
+    
+.:/var/www/html
+ports:
+"8000:8000"
+depends_on:
+db
+environment:
+  DATABASE_URL: mysql://root:@127.0.0.1:3306/miams
+  # command: >
+  # sh -c "#     php bin/console doctrine:database:create --if-not-exists &&
+  # php bin/console doctrine:schema:update --force &&#     php bin/console doctrine:fixtures:load --no-interaction &&
+  # symfony server:start --no-tls --port=8000 --allow-http#   "
 
-  app:
-    build:
-      context: .
-    container_name: symfony_app
-    working_dir: /var/www/html
-    volumes:
-      - .:/var/www/html
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: mysql://root:root@db:3306/miams  # Remplacer 127.0.0.1 par db
-    # command: >
-    #   sh -c "
-    #     php bin/console doctrine:database:create --if-not-exists &&
-    #     php bin/console doctrine:schema:update --force &&
-    #     php bin/console doctrine:fixtures:load --no-interaction &&
-    #     symfony server:start --no-tls --port=8000 --allow-http
-    #   "
 
 volumes:
   db_data:
-
-  
-# version: "3.9"
-
-# services:
-#   db:
-#     image: mysql:8.0
-#     container_name: symfony_db
-#     environment:
-#       MYSQL_ROOT_PASSWORD: root
-#       MYSQL_DATABASE: miams
-#       MYSQL_PASSWORD: root
-#     ports:
-#       - "3306:3306"
-#     volumes:
-#       - db_data:/var/lib/mysql
-
-#   app:
-#     build:
-#       context: .
-#     container_name: symfony_app
-#     working_dir: /var/www/html
-#     volumes:
-#       - .:/var/www/html
-#     ports:
-#       - "8000:8000"
-#     depends_on:
-#       - db
-#     environment:
-#       DATABASE_URL: mysql://root:root@db:3306/miams  # Remplacer 127.0.0.1 par db
-
-
-# volumes:
-#   db_data:
