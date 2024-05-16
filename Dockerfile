@@ -28,7 +28,7 @@ WORKDIR /var/www/html
 ENV COMPOSER_ALLOW_SUPERUSER=1
 
 #Installer les dépendances de développement pour éviter les erreurs liées aux bundles dev
-# RUN composer install --ignore-platform-req=ext-xml
+RUN composer install --ignore-platform-req=ext-xml
 
 #Donner les permissions appropriées
 RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public
