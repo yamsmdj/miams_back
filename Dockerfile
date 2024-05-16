@@ -18,6 +18,9 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 RUN wget https://get.symfony.com/cli/installer -O - | bash \
     && mv /root/.symfony*/bin/symfony /usr/local/bin/symfony
 
+# Install MySQL client
+RUN apt-get update && apt-get install -y mysql-client
+
 # Copier les fichiers de l'application
 COPY . /var/www/html
 
@@ -37,4 +40,4 @@ RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public
 EXPOSE 8000
 
 # Commande pour démarrer le serveur Symfony
-CMD ["symfony", "server:start", "--no-tls", "--port=8000", "--allow-http"]
+CMD ["symfony", "server:run","--host=194.164.174.36", "--no-tls", "--port=8000", "--allow-http"]
