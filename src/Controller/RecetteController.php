@@ -33,10 +33,6 @@ class RecetteController extends AbstractController
 
     public function getAll(): Response
     {
-        // // if (!$this->isGranted('ROLE_ADMIN')) {
-        // //     dd($this->json($this->getUser()));
-        // // }
-        // dd($this->getUser());
         return new Response($this->serializer->serialize($this->recetteService->getAll(), 'json', ['groups' => 'getRecette', 'getEtape']));
     }
     #[Route('/{id}', methods: ['GET'])]
