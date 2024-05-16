@@ -1,6 +1,12 @@
 # Utiliser l'image de base PHP avec CLI et PHP 8.2
 FROM php:8.2-cli
 
+# Installez les extensions nécessaires
+RUN docker-php-ext-install pdo pdo_mysql zip
+
+# Autres étapes de configuration...
+
+
 # Mettre à jour les paquets et installer les extensions nécessaires
 RUN apt-get update && apt-get install -y \
     libicu-dev \
