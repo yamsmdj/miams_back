@@ -6,7 +6,7 @@ services:
     container_name: symfony_db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: miams
+      MYSQL_DATABASE: miams2
       MYSQL_PASSWORD: root
     ports:
       - "3306:3306"
@@ -24,7 +24,7 @@ services:
     depends_on:
       - db
     environment:
-      DATABASE_URL: mysql://root:@127.0.0.1:3306/miams
+      DATABASE_URL: mysql://root:@127.0.0.1:3306/miams2
     # command: >
     #   sh -c "
     #     php bin/console doctrine:database:create --if-not-exists &&
@@ -32,7 +32,7 @@ services:
     #     php bin/console doctrine:fixtures:load --no-interaction &&
     #     symfony server:start --no-tls --port=8000 --allow-http
     #   "
-  
+    
 
 volumes:
   db_data:

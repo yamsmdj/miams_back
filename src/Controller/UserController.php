@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\MapRequestPayload;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -52,6 +53,18 @@ class UserController extends AbstractController
         return new Response($this->serializer->serialize($createdUser, 'json'));
     }
 
+    #[Route('/{id}', methods: ['PUT'])]
+    public function put(#[MapRequestPayload()] User $newUser, $id): Response
+    {
+        $user = $this->userService->update($newUser, $id);
+        return new Response($user);
+    }
+    #[Route('/{id}', methods: ['PATCH'])]
+    public function patch($id, #[MapRequestPayload()] User $user):Response
+    {
+        $user = $this->userService->patch($id, $user);
+        return new Response ($user);
+    }
 
     #[Route('/login', methods: ['POST'])]
     public function login(Request $request, JwtEncoderInterface $jwtEncoder): JsonResponse
@@ -63,16 +76,15 @@ class UserController extends AbstractController
         $password = $jsonData['password'];
 
         $user = $this->userService->findByUsername($username);
-        if (!$user || !$this->hasher->hashPassword($user, $password)) {
-            return new JsonResponse(['message' => 'Invalid credentials'], Response::HTTP_UNAUTHORIZED);
+        if (!$user || !$this->hasher->isPasswordValid($user, $password)) {
+
+            return new JsonResponse(['message' => 'Email ou mot de passe incorrect.'], Response::HTTP_UNAUTHORIZED);
         }
         $roles = $user->getRoles();
-
         // Générer le token JWT
-        $token = $jwtEncoder->encode(['username' => $user->getUsername(),'roles' => $roles]);
-
-
+        $token = $jwtEncoder->encode(['id' => $user->getId(), 'username' => $user->getUsername(),'roles' => $roles]);
         $response = new JsonResponse(['token' => $token]);
+
 
         return $response;
     }

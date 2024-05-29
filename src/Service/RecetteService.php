@@ -40,7 +40,6 @@ class RecetteService
         $newRecette->setPicture($recette->getPicture());
 
 
-        // Set the category
         if ($recette->getCategorie()) {
             $categorieName = $recette->getCategorie()->getName();
             $categorie = $this->em->getRepository(Categorie::class)->findOneBy(['name' => $categorieName]);

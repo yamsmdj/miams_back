@@ -33,7 +33,6 @@ class RecetteRepository extends ServiceEntityRepository
         ->getResult();
     }
 
-    
     public function findRecetteByTitle($title)
     {
         $title = str_replace(' ', '_', $title);

@@ -40,4 +40,4 @@ RUN chown -R www-data:www-data /var/www/html/var /var/www/html/public
 EXPOSE 8000
 
 # Commande pour démarrer le serveur Symfony
-CMD ["symfony", "server:start", "--no-tls", "--port=8000", "--allow-http"]
+CMD ["symfony", "server:start", "--port=8000", "--allow-http"]
