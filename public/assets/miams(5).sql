@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 06 mai 2024 à 21:45
+-- Généré le : mer. 29 mai 2024 à 16:59
 -- Version du serveur : 8.2.0
 -- Version de PHP : 8.2.13
 
@@ -46,28 +46,6 @@ INSERT INTO `categorie` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `doctrine_migration_versions`
---
-
-DROP TABLE IF EXISTS `doctrine_migration_versions`;
-CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
-  `version` varchar(191) COLLATE utf8mb3_unicode_ci NOT NULL,
-  `executed_at` datetime DEFAULT NULL,
-  `execution_time` int DEFAULT NULL,
-  PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
-
---
--- Déchargement des données de la table `doctrine_migration_versions`
---
-
-INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20240420183909', '2024-05-06 21:11:22', 14),
-('DoctrineMigrations\\Version20240506211102', '2024-05-06 21:11:36', 61);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `etape`
 --
 
@@ -79,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `etape` (
   `description` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_285F75DD89312FE9` (`recette_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=106 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `etape`
@@ -92,7 +70,45 @@ INSERT INTO `etape` (`id`, `recette_id`, `n_etape`, `description`) VALUES
 (4, 5, 4, 'Ajouter la purée de tomates, l\'eau et les herbes. Saler, poivrer, puis laisser mijoter à feu doux 45 minutes.'),
 (5, 5, 5, 'Préparer la béchamel : faire fondre 100 g de beurre.'),
 (6, 5, 6, 'Remettre sur le feu et remuer avec un fouet jusqu\'à l\'obtention d\'un mélange bien lisse. '),
-(7, 5, 7, 'Déguster');
+(7, 5, 7, 'Déguster'),
+(8, 1, 1, 'Faites dorer le pain, coupé en cubes, 3 min dans un peu d\'huile. '),
+(9, 1, 2, 'Déchirez les feuilles de romaine dans un saladier, et ajoutez les croûtons préalablement épongés dans du papier absorbant.'),
+(10, 1, 3, 'Préparez la sauce : Faites cuire l\'oeuf 1 min 30 dans l\'eau bouillante, et rafraîchissez-le.'),
+(11, 1, 4, 'Cassez-le dans le bol d\'un mixeur et mixez, avec tous les autres ingrédients; rectifiez l\'assaissonnement et incorporez à la salade. '),
+(12, 1, 5, 'Décorez de copeaux de parmesan, et servez.'),
+(13, 3, 1, 'Préchauffer le four à 180°C (thermostat 6). Etaler la pâte dans un moule'),
+(14, 3, 2, 'la piquer à la fourchette. Parsemer de copeaux de beurre.'),
+(15, 3, 3, 'Faire rissoler les lardons à la poêle puis les éponger avec une feuille d\'essuie-tout.'),
+(16, 3, 4, 'Battre les oeufs, la crème fraîche et le lait.'),
+(17, 3, 5, 'Cuire 45 à 50 min.'),
+(18, 3, 6, 'Déguster'),
+(19, 6, 1, 'Préchauffer le four à 180°C (thermostat 6). Faire fondre le chocolat et le beurre au bain-marie à feu doux, ou au micro-ondes sur le programme décongélation'),
+(20, 6, 2, 'Pendant ce temps, séparer les jaunes des blancs d\'oeuf.'),
+(21, 6, 3, 'Quand le mélange chocolat-beurre est bien fondu, ajouter les jaunes d’oeufs et fouetter. '),
+(22, 6, 4, 'Incorporer le sucre et la farine, puis ajouter les blancs d’oeufs sans les casser.'),
+(23, 6, 5, 'Beurrer et fariner un moule à manqué et y verser la pâte à gâteau.'),
+(24, 6, 6, 'Quand le gâteau est cuit, le laisser refroidir avant de le démouler'),
+(25, 7, 1, 'Faire blanchir les champignons dans 1/2 litre d\'eau salée pendant 5 minutes. Égouttez-les et conservez leur bouillon.'),
+(26, 7, 2, 'Dans un poêlon ou une grande casserole à fond peu épais, faire revenir l\'oignon, l\'ail et le persil hachés fin dans 2 cuillères à soupe de crème fraiche.'),
+(27, 7, 3, 'Rajoutez le riz, les champignons, le reste de la crème et le mascarpone et recouvrez du bouillon. Assaisonnez. Laissez cuire à couvert à feu moyen jusqu\'à ce que le riz soit fondant et la sauce crémeuse (au moins 45 minutes).'),
+(28, 7, 4, 'Hors du feu, incorporez le parmesan râpé. Remuez bien.'),
+(29, 7, 5, 'Servez bien chaud.'),
+(30, 7, 6, 'A servir avec des langoustines par exemple.'),
+(31, 10, 1, 'Faire blanchir les champignons dans 1/2 litre d\'eau salée pendant 5 minutes. Égouttez-les et conservez leur bouillon.'),
+(32, 10, 2, 'Mettez les blancs et le sel dans un saladier.'),
+(33, 10, 3, 'Fouettez de plus en plus vite.'),
+(34, 10, 4, 'Incorporez le vinaigre et la maïzena tamisée.'),
+(35, 10, 5, 'Formez aussitôt des tas sur une plaque anti-adhésive.'),
+(36, 10, 6, 'Enfournez pour 1 heure de cuisson. Les meringues doivent être blond très clair, sèches dessus et dessous. '),
+(37, 10, 7, 'Laissez refroidir puis décollez-les du papier cuisson.'),
+(60, 36, 1, 'acheter l\'eau'),
+(61, 36, 2, 'ouvrir la bouteille'),
+(62, 36, 3, 'verser dans un verre'),
+(63, 36, 4, 'Deguster'),
+(102, 36, 1, 'acheter l\'eau'),
+(103, 36, 2, 'ouvrir la bouteille'),
+(104, 36, 3, 'verser dans un verre'),
+(105, 36, 4, 'Deguster');
 
 -- --------------------------------------------------------
 
@@ -163,45 +179,21 @@ CREATE TABLE IF NOT EXISTS `recette` (
   `picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_49BB6390BCF5E72D` (`categorie_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `recette`
 --
 
 INSERT INTO `recette` (`id`, `title`, `description`, `time`, `created_at`, `categorie_id`, `picture`) VALUES
-(1, 'Salade Cesar', 'Tres bonne pour l\'été fraiche et appetissante', 20, '2024-04-20 17:25:56', 1, NULL),
-(3, 'La quiche lorraine', 'Maintenant que vous maîtrisez la pâte brisée, je vous montre comment la garnir façon Lorraine avec du lard fumé et beaucoup de gruyère bien sûr !! Prêts à vous régaler ?!\n', 30, '2024-04-20 18:15:29', 1, NULL),
-(5, 'Lasagnes à la bolognaise', ' la bolognaise est parfaite pour découvrir les légumineuses. Enrobées de sauce tomate, les lentilles se transforment en une sauce fondante et végétarienne ! »', 125, '2024-04-24 21:42:39', 2, NULL),
-(6, 'fondant au chocolat', '« Pour aller plus vite, pour faire fondre le chocolat et le beurre, je mets le tout dans un bol coupé en carrés au micro-ondes.', 40, '2024-04-24 21:47:29', 3, NULL),
-(7, 'Risotto aux champignons', 'Tres bonne pour l\'été fraiche et appetissante', 50, '2024-04-28 13:25:56', 2, NULL),
-(10, 'Meringue', 'Cette recette est un miracle !', 10, '2024-04-28 13:51:44', 3, NULL),
-(12, 'bouchra', 'test', 20, '2024-05-02 23:02:23', 1, NULL),
-(13, 'test', 'test', 20, '2024-05-03 09:24:03', NULL, NULL),
-(14, 'test2', 'test', 20, '2024-05-03 09:24:49', NULL, NULL),
-(15, 'lej', 'test', 20, '2024-05-03 11:08:17', NULL, NULL),
-(16, 'lej', 'test', 20, '2024-05-03 12:58:20', NULL, NULL),
-(17, 'lej', 'test', 20, '2024-05-03 12:58:32', NULL, NULL),
-(18, 'lej', 'test', 20, '2024-05-03 12:58:40', NULL, NULL),
-(19, 'lej', 'test', 20, '2024-05-03 12:59:33', NULL, NULL),
-(20, 'lej', 'test', 20, '2024-05-03 13:00:08', 2, NULL),
-(21, 'moha', 'test', 20, '2024-05-03 13:34:24', 2, NULL),
-(22, 'gg', 'oktest', 5, '2024-05-03 13:35:33', NULL, NULL),
-(23, 'Salade Cesar', 'Tres bonne pour l\'été fraiche et appetissante', 20, '2024-05-03 16:33:33', NULL, NULL),
-(24, 'Salade Cesar', 'Tres bonne pour l\'été fraiche et appetissante', 20, '2024-05-03 16:33:49', NULL, NULL),
-(25, 'Salade Cesar', 'Tres bonne pour l\'été fraiche et appetissante', 20, '2024-05-03 16:35:16', NULL, NULL),
-(26, 'Salade Cesar', 'Tres bonne pour l\'été fraiche et appetissante', 20, '2024-05-03 16:35:39', NULL, NULL),
-(27, 'Salade Cesar', 'Tres bonne pour l\'été fraiche et appetissante', 20, '2024-05-03 16:35:43', NULL, NULL),
-(53, 'rea', 'rea', 23, '2024-05-05 16:20:54', NULL, NULL),
-(54, 'dz', 'dz', -1, '2024-05-05 16:25:00', NULL, NULL),
-(55, 'dz', 'dz', 23, '2024-05-05 16:27:07', NULL, NULL),
-(56, 'dz', 'dz', 23, '2024-05-05 16:27:29', NULL, NULL),
-(57, 'dsdsds', 'dsdsd', 23, '2024-05-05 16:38:57', NULL, NULL),
-(58, 'wwww', 'wwww', 2, '2024-05-05 16:45:59', NULL, NULL),
-(59, 'wwwww', 'wwwwwww', 32, '2024-05-05 16:50:29', 2, NULL),
-(60, 'wwwww', 'wwwwwww', 32, '2024-05-05 16:50:46', 2, NULL),
-(61, 'wwwww', 'wwwwwww', 32, '2024-05-05 16:50:52', 3, NULL),
-(62, 'vwzdvwd', 'wwwwwww', 32, '2024-05-05 16:51:53', 1, NULL);
+(1, 'Salade Cesar', 'Tres bonne pour l\'été fraiche et appetissante', 20, '2024-05-03 16:35:16', 1, 'recettes66478c2372fd9.png'),
+(3, 'La quiche lorraine', 'Maintenant que vous maîtrisez la pâte brisée, je vous montre comment la garnir façon Lorraine avec du lard fumé et beaucoup de gruyère bien sûr !! Prêts à vous régaler ?!\n', 30, '2024-04-20 18:15:29', 1, 'laquichelorraine.png'),
+(5, 'Lasagnes à la bolognaise', ' la bolognaise est parfaite pour découvrir les légumineuses. Enrobées de sauce tomate, les lentilles se transforment en une sauce fondante et végétarienne ! »', 125, '2024-04-24 21:42:39', 2, 'lasagnesalabolognaise.png'),
+(6, 'fondant au chocolat', '« Pour aller plus vite, pour faire fondre le chocolat et le beurre, je mets le tout dans un bol coupé en carrés au micro-ondes.', 40, '2024-04-24 21:47:29', 3, 'fondant_au_chocolat.png'),
+(7, 'Risotto aux champignons', 'Tres bonne pour l\'été fraiche et appetissante', 50, '2024-04-28 13:25:56', 2, 'risottoauxchampignons.png'),
+(10, 'Meringue', 'Cette recette est un miracle !', 10, '2024-04-28 13:51:44', 3, 'meringue.png'),
+(12, 'Oeufs mollets', 'La cuisson des oeufs ne s\'improvise pas. Attention donc à cuire des oeufs qui sont à température ambiante. Donc si vous avez l\'habitude de les conserver au réfrigérateur, sortez-les 1 heure avant. Ainsi, vous éviterez les chocs thermiques et le risque que', 8, '2024-05-06 23:34:47', 1, 'oeufsmollets.png'),
+(36, 'Eau', 'je bois de l\'eau ', 0, '2024-05-08 13:43:02', 1, 'eau.png');
 
 -- --------------------------------------------------------
 
@@ -229,7 +221,6 @@ INSERT INTO `recette_ingredient` (`recette_id`, `ingredient_id`) VALUES
 (1, 18),
 (1, 19),
 (1, 20),
-(1, 21),
 (3, 15),
 (3, 16),
 (3, 17),
@@ -269,17 +260,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_IDENTIFIER_EMAIL` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Déchargement des données de la table `user`
 --
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
-(1, 'admin@admin.com', '[\"ROLE_ADMIN\", \"ROLE_USER\"]', '$2y$13$2HFiA2QnPdkaZeDf1zXR2O09aG7oPjhIQGSc93FgTsmc3qVViYK8y'),
-(2, 'admin@admin.fr', '[\"ROLE_ADMIN\", \"ROLE_USER\"]', '$2y$13$x3IamkG.2lnnMX9r9nByMe8PjBATJxJuVAijSeDptnuL11yzxviA.'),
-(3, 'user@user.com', '[\"ROLE_USER\"]', '$2y$13$eWX8NSVj3usI7mt//2hofOBfKrJYmYZJyYXmqUCf.E/pR2EUE.9gu'),
-(4, 'yams@yams.fr', '[\"ROLE_ADMIN\"]', 'yams');
+(1, 'admin@admin.com', '[\"ROLE_ADMIN\", \"ROLE_USER\"]', '$2y$13$bPa02wo6OG1V.hMWRdU0gOaHlo8wFssFvrRPgsRpDZesrlFliVkZ2'),
+(2, 'admin@admin.fr', '[\"ROLE_USER\", \"ROLE_ADMIN\"]', '$2y$13$hn0Q3Y.j4DkwwOR7P89rAeF1SqYAsFi3u/0HcoHZcuNNRVln26zQC'),
+(3, 'user@user.com', '[\"ROLE_USER\"]', '$2y$13$oA1TAQFgcb9qqndW5s0MtOkbAIFg0bS/W7RwDQEH6EwSKj.mHB9yq'),
+(4, 'yams@yams.fr', '[\"ROLE_ADMIN\"]', '$2y$13$RGj6.963tUbpYOIbd9yS6etsum3eKAUXbtdArk4NaLKMhtHgWW752'),
+(6, 'test@test.com', '[\"ROLE_ADMIN\", \"ROLE_USER\"]', '$2y$13$tTIbcuJSDoMo2lFttUzBQug8OKCOS3F4WTLHh5d5supOXK3/ZBVzu');
 
 --
 -- Contraintes pour les tables déchargées
